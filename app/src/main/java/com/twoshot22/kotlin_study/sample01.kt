@@ -10,9 +10,12 @@ fun main(){/*
     val lastName = "Kim"
     println("My Name is ${name + lastName}I'm 22")
     println("this is 2\$ma'am")
-    */
+
 
     forAndWhile()
+    */
+
+    nullcheck()
 }
 
 // 1. 함수
@@ -145,5 +148,29 @@ fun nullcheck(){
 
     var name : String = "Mansoo"
 
-//    var nullName : String = null
+    var nullName : String? = null // nullable type
+
+    var nameInUpperCase = name.toUpperCase()
+
+    var nullNameInUpperCase = nullName?.toUpperCase() // ?를 붙이면 null인지 아닌지에 따라 추론하는 것
+
+    // ?. 바로 Null을 반환 / ?: (엘비스 연산자) : Default 값을 주고 싶을 때
+    val lastName : String ?= null
+
+    val fullName = name + (lastName?: "NO lastName")
+    println(fullName)
+}
+
+// !! - Null이 아닌 것을 보증해 주는 것 (정말 확실하지 않은 이상은 사용 X)
+fun ignoreNulls(str : String?){
+    val mNotNull : String = str!!
+    var upper : String = mNotNull.toUpperCase()
+
+    val email : String = "mansoo0621@likelion.org"
+    
+    // let -> 자신의 Receiver 객체를 Lambda 식 내부로 옮겨서 실행하는 것
+    // 이메일을 람다식 내부로 옮겨주는 것
+    email?.let{
+        println("my email is ${email}")
+    }
 }
