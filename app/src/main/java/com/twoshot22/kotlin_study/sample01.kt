@@ -11,6 +11,8 @@ fun main(){/*
     println("My Name is ${name + lastName}I'm 22")
     println("this is 2\$ma'am")
     */
+
+    forAndWhile()
 }
 
 // 1. 함수
@@ -81,3 +83,67 @@ fun checkNum(score : Int){
 // Expression (뚝딱뚝딱해서 값을 만들어 냄) vs Statement (명령 지시)
 // Kotlin에서 모든 함수는 Expression!! (void도 return Unit 하는 것)
 // Kotlin에서는 if문의 조건문을 Statement 뿐만 아니라 Expression도 활용 가능
+
+// 5. Array vs List
+// Array는 메모리가 할당 된 상태로 나옴 -> 처음에 크기 지정
+// ImmutableList (수정 불가능) vs MutableList (수정 가능)
+
+fun array(){
+    // arrayOf -> 배열 초기화
+    val array = arrayOf(1,2,3)
+    val list = listOf(1,2,3)
+
+    val array2 = arrayOf(1, "d", 3.4f)
+    val list2 = listOf(1, "d", 11L)
+
+    // Array는 Mutable
+    array[0] = 3
+
+    // List는 읽기 전용 (Immutable) / List는 Interface
+    var result = list.get(0)
+
+    // 메모리 주소가 변하지 않기 때문에 val 사용
+    val arrayList = arrayListOf<Int>()
+    arrayList.add(10)
+}
+
+// 6. 반복문
+
+fun forAndWhile(){
+    val students = arrayListOf("mansoo", "jisu", "jeonghoon")
+
+    for(name in students){
+        println("${name}")
+    }
+    
+    // Dictionary?
+    for((index, name) in students.withIndex()){
+        println("${index+1}번째 학생 : ${name}")
+    }
+
+    var sum : Int = 0
+    // 증감식은 step or downTo
+    // 1..100 과 1 until 100 으로 표현 가능 -> But until은 100 미만까지!
+    for(i in 1..10 step 2){
+        sum += i
+    }
+    println(sum)
+
+    var index : Int = 0
+    while(index <= 10){
+        println("Current Index is ${index}")
+        index++
+    }
+}
+
+// 7. Nullable / NonNull
+
+fun nullcheck(){
+    // NPE : Null Pointer Exception
+    // JAVA에서는 Compile 단계에서 감지가 안 되고 Runtime에서만 감지되기 때문에 실행해봐야 알 수 있었음
+    // Kotlin은 ?을 활용해 Compile 단계에서부터 감지
+
+    var name : String = "Mansoo"
+
+//    var nullName : String = null
+}
